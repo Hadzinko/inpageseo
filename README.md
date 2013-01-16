@@ -28,7 +28,5 @@ License
     See the License for the specific language governing permissions and
     limitations under the License.
 
-
-
  [1]: https://github.com/StephanSchmidt/inpageseo/dist
  [2]: http://inpage-seo-checker.eventsofa.de
