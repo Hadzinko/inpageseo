@@ -1,4 +1,6 @@
 // Neither written in OO nor in FP 
+// Be kind when reading the code, 
+// I'm no JS hacker. Thanks you. 
 ;
 (function() {
 
