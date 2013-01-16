@@ -3,13 +3,13 @@ Inpage SEO Checker
 
 Javascript library for continuous inpage seo checking.
 
-For more information please see [the website][1].
+For more information please see [the website][2].
 
 
 Download
 --------
 
-You can also find downloadable minified .js on the [GitHub download page][2].
+You can also find downloadable minified .js on the [GitHub download page][1].
 
 License
 -------
@@ -30,5 +30,5 @@ License
 
 
 
- [1]: http://
- [2]: http://
+ [1]: https://github.com/StephanSchmidt/inpageseo/dist
+ [2]: http://inpage-seo-checker.eventsofa.de
