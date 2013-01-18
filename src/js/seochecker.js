@@ -1,6 +1,6 @@
 // Neither written in OO nor in FP 
 // Be kind when reading the code, 
-// I'm no JS hacker. Thanks you. 
+// I'm no JS hacker. Thank you. 
 ;
 (function() {
 
@@ -161,7 +161,7 @@
         if (on(config.img_check)) {
             var imgWithoutAlt = findTagsWithEmptyAttribute('img', 'alt');
             if (imgWithoutAlt.length > 0) {
-                errors.push(imgWithoutAlt.length + ' IMG have no or empty alt.');
+                errors.push(imgWithoutAlt.length + ' IMGs have no or empty alt.');
             }
         }
         // Check number of keywords
@@ -171,37 +171,43 @@
                 errors.push('Page should have META keywords.');
             } else {
                 var keyWordCount = keywords.split(",").length;
-                if (keyWordCount > conf(config.keywords_max, 5)) {
-                    errors.push('Page has more than ' + conf(config.keywords_max, 5) + ' META keywords.');
+                var min = conf(config.keywords_min, 1);
+                var max = conf(config.keywords_max, 5);
+                if (keyWordCount > max) {
+                    errors.push('Page has more than ' + min + ' META keywords.');
                 }
                 if (keyWordCount < conf(config.keywords_min, 1)) {
-                    errors.push('Page has less than ' + conf(config.keywords_min, 5) + ' META keywords.');
+                    errors.push('Page has less than ' + min+ ' META keywords.');
                 }
             }
         }
         // Check for META description and correct size
         if (on(config.description_check)) {
             var description = getMeta('description');
+            var min = conf(config.description_min, 70);
+            var max = conf(config.description_max, 160);
             if (!exists(description)) {
                 errors.push('Page should have a META description.');
-            } else if (description.length < 70 || description > 160) {
-                errors.push("META description should be between 70 and 160 characters.");
+            } else if (description.length < min || description.length > max) {
+                errors.push("META description should be between " + min + " and " + max + " characters.");
             }
         }
         // Check if title has correct size
         if (on(config.title_check)) {
             var title = getElementContent('title');
+            var min = conf(config.title_min, 10);
+            var max = conf(config.title_max, 70);
             if (!exists(title)) {
                 errors.push('Page should have a title.');
-            } else if (title.length < 10 || title.length > 70) {
-                errors.push('Title should be between 10 and 70 characters.');
+            } else if (title.length < min || title.length > max) {
+                errors.push('Title should be between ' + min + ' and ' + max + ' characters.');
             }
         }
         // Print errors
         if (errors.length > 0) {
             var div = element('div');
             div.setAttribute("style", "background-color:#ffaaaa;");
-            div.appendChild(elementWithContent('div', '<b>InPage SEO Checker: ' + errors.length + ' error(s)</b>'));
+            div.appendChild(elementWithContent('div', '<b>InPage SEO Checker: ' + errors.length + ' error(s)</b> <a href="http://inpage-seo-checker.eventsofa.de">Inpage SEO Checker</a>'));
             var out = element('ul');
             for (var i = 0; i < errors.length; i++) {
                 addError(out, errors[i]);
